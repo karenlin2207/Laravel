@@ -52,7 +52,7 @@ html, body {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo e(url('/addmin')); ?>">
+                <a class="navbar-brand" href="<?php echo e(url('/admin')); ?>">
                     <?php echo e(config('app.name', 'Laravel')); ?>
 
                 </a>

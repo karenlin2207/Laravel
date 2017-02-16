@@ -38,7 +38,7 @@ class ProductController extends Controller
         if($request['is_show']!=1) {$request['is_show']=0;}
         $request->user()->products()->create($request->all());
 
-        return redirect('/addmin/products');
+        return redirect('/admin/products');
     }
 
     public function edit(Product $product)
@@ -70,12 +70,12 @@ class ProductController extends Controller
         $product = Product::find($product->id);
         $product->update($request);
 
-        return redirect('/addmin/products');
+        return redirect('/admin/products');
     }
 
     public function delete(Product $product)
     {
         $product->delete();
-        return redirect('/addmin/products');
+        return redirect('/admin/products');
     }
 }

@@ -15,7 +15,7 @@
                 <div class="panel-heading">
                     新增車款
                 </div>
-                <form method="POST" action="/addmin/products/" enctype="multipart/form-data"> 
+                <form method="POST" action="/admin/products/" enctype="multipart/form-data"> 
                      {{ csrf_field() }}
                 <div class="panel-body">
                     <label>名稱 : </label>

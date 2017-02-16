@@ -15,7 +15,7 @@
                 <div class="panel-heading">
                     編輯車款
                 </div>
-                <form method="POST" action="/addmin/products/{{$product->id}}" enctype="multipart/form-data"> 
+                <form method="POST" action="/admin/products/{{$product->id}}" enctype="multipart/form-data"> 
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
                 <div class="panel-body">

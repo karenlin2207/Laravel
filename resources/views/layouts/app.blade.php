@@ -52,7 +52,7 @@ html, body {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url('/addmin') }}">
+                <a class="navbar-brand" href="{{ url('/admin') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
             </div>
