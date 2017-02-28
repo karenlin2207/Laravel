@@ -73,6 +73,12 @@ class ProductController extends Controller
         return redirect('/admin/products');
     }
 
+    public function changeStatus(Request $request, Product $product){
+        $request = $request->all();
+        $product->update($request);
+        return redirect('/admin/products');
+    }
+
     public function delete(Product $product)
     {
         $product->delete();

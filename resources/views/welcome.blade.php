@@ -92,6 +92,13 @@
                         @endforeach
                     </section>
 
+                    <section id="sliders">
+                        @foreach($sliders as $slider)
+                        <slider>
+                            <a class="thumbnail" href=""><img class="slider" src="{{$slider->img_uri}}" alt="" style="display:none"/></a>
+                        </slider>
+                        @endforeach
+                    </section>
                 <!-- Footer -->
                     <footer id="footer">
                         <ul class="copyright">
