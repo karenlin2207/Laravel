@@ -4,7 +4,6 @@
             <div class="row">
                 <div class="col-md-8  col-md-offset-2">
                     <h4 class="page-head-line">Please Login To Enter </h4>
-
                 </div>
 
             </div>
