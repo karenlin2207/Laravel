@@ -34,7 +34,12 @@ class SliderController extends Controller
         }
         $request['img_uri'] = '/uploads/'. $file_name;
 
-        if($request['is_show']!=1) {$request['is_show']=0;}
+        if (isset($request['is_show'])) {
+            $request['is_show'] = true;
+        } else {
+            $request['is_show'] = false;
+        }
+
         Slider::create($request->all());
 
         return redirect('/admin/sliders');
@@ -65,7 +70,13 @@ class SliderController extends Controller
             $request['img_uri'] = '/uploads/'. $file_name;
         }
         $request['short_describe'] = 'test';
-        if($request['is_show']!=1) {$request['is_show']=0;}
+
+        if (isset($request['is_show'])) {
+            $request['is_show'] = true;
+        } else {
+            $request['is_show'] = false;
+        }
+
         $slider = Slider::find($slider->id);
         $slider->update($request);
 

@@ -58,7 +58,13 @@ class ArticleController extends Controller
         }
         $request['img_uri'] = $file_name;
         $request['short_describe'] = 'test';
-        if($request['is_show']!=1) {$request['is_show']=0;}
+
+        if (isset($request['is_show'])) {
+            $request['is_show'] = true;
+        } else {
+            $request['is_show'] = false;
+        }
+
         $request->user()->articles()->create($request->all());
 
         return redirect('/admin/articles/'.$request->type.'s');
@@ -92,6 +98,13 @@ class ArticleController extends Controller
             }
             $request['img_uri'] = $file_name;
         }
+
+        if (isset($request['is_show'])) {
+            $request['is_show'] = true;
+        } else {
+            $request['is_show'] = false;
+        }
+
         $article = Article::find($article->id);
         $article->update($request);
         return redirect('/admin/articles/'.$article->type.'s');

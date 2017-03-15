@@ -24,6 +24,8 @@
                     <input type="text" class="form-control" name="market_price"/>
                     <label>售價 : </label>
                     <input type="text" class="form-control" name="sale_price"/>
+                    <label>商品tags : </label>
+                    <input type="text" class="form-control" name="tags"/>
                     <label>商品圖片 :  </label>
                     <input type="file" class="form-control" id="user_icon_file" name="user_icon_file" placeholder="上傳圖片">
                     <label>商品介紹 : </label>

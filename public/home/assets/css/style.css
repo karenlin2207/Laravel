@@ -157,7 +157,7 @@ header {
 /* MENU LINKS SECTION*/
 
 .menu-section {
-    background-color: #3D3D3D;
+    background-color: #337ab7;
 }
 
 #menu-top a {
@@ -191,7 +191,7 @@ header {
 }
 
 .navbar {
-    margin-bottom: 0px;
+    margin-bottom: 10px;
 }
 /* =============================================================
    FOOTER SECTION STYLES
@@ -200,7 +200,7 @@ footer {
     padding: 10px;
     color: #fff;
     font-size: 12px;
-    background-color: #C36464;
+    background-color: #337ab7;
 }
 
     footer a, footer a:hover {

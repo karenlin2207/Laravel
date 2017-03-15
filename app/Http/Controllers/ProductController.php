@@ -11,8 +11,6 @@ class ProductController extends Controller
 {
     public function index()
     {
-        // $products = Product::all();
-    	// return view('product.index', compact('products'));
         return response()->json(Product::all());
     }
 
@@ -35,8 +33,19 @@ class ProductController extends Controller
         $request['img_uri'] = '/uploads/'. $file_name;
         $request['short_describe'] = 'test';
         $request['category_id'] = 1;
-        if($request['is_show']!=1) {$request['is_show']=0;}
-        $request->user()->products()->create($request->all());
+
+        if (isset($request['is_show'])) {
+            $request['is_show'] = true;
+        } else {
+            $request['is_show'] = false;
+        }
+
+        $product = $request->user()->products()->create($request->all());
+
+        $tags = explode(',', $request->get('tags'));
+
+        $product->tag($tags);
+
 
         return redirect('/admin/products');
     }
@@ -66,7 +75,16 @@ class ProductController extends Controller
             $request['img_uri'] = '/uploads/'. $file_name;
         }
         $request['short_describe'] = 'test';
-        if($request['is_show']!=1) {$request['is_show']=0;}
+
+        if (isset($request['is_show'])) {
+            $request['is_show'] = true;
+        } else {
+            $request['is_show'] = false;
+        }
+        $tags = explode(',', $request->get('tags'));
+
+        $product->tag($tags);
+
         $product = Product::find($product->id);
         $product->update($request);
 
