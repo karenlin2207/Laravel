@@ -81,9 +81,14 @@ class ProductController extends Controller
         } else {
             $request['is_show'] = false;
         }
-        $tags = explode(',', $request->get('tags'));
+        
+        if ($request['tags']!='') {
+            $tags = explode(',', $request['tags']);
 
-        $product->tag($tags);
+            $product->retag($tags);
+        }
+
+        
 
         $product = Product::find($product->id);
         $product->update($request);

@@ -76,7 +76,7 @@
                             }.bind(this));
                         },
                         edit:function(product){
-                            window.location.href = '/addmin/products/edit/' + product.id;
+                            window.location.href = '/admin/products/edit/' + product.id;
                         }
                     }
                 });

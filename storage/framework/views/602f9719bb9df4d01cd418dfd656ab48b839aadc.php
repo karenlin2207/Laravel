@@ -14,7 +14,7 @@
                 <div class="panel-heading">
                     編輯車款
                 </div>
-                <form method="POST" action="/addmin/products/<?php echo e($product->id); ?>" enctype="multipart/form-data"> 
+                <form method="POST" action="/admin/products/<?php echo e($product->id); ?>" enctype="multipart/form-data"> 
                     <?php echo e(csrf_field()); ?>
 
                     <?php echo e(method_field('PUT')); ?>
@@ -26,6 +26,9 @@
                     <input type="text" class="form-control" name="market_price" value="<?php echo e($product->market_price); ?>" />
                     <label>售價 : </label>
                     <input type="text" class="form-control" name="sale_price" value="<?php echo e($product->sale_price); ?>" />
+                    <label>商品tags : </label>
+                    <input type="text" class="form-control" name="tags"
+                    value="<?php $__currentLoopData = $product->tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?><?php echo e($tag->name); ?>,<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>" />
                     <label>商品圖片 :  <img src="<?php echo e($product->img_uri); ?>" style="width: 30px;"></label>
                     <input type="file" class="form-control" id="user_icon_file" name="user_icon_file" placeholder="上傳圖片">
                     <label>商品介紹 : </label>

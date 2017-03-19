@@ -41,9 +41,9 @@ body {
 .page-head-line {
     font-weight: 900;
     padding-bottom: 20px;
-    border-bottom: 2px solid #F0677C;
+    border-bottom: 2px solid #074892;
     text-transform: uppercase;
-    color: #F0677C;
+    color: #074892;
     font-size: 20px;
     margin-bottom: 40px;
 }
@@ -216,19 +216,19 @@ footer {
 /* DASHBOARD ICONS */
 
 .bk-clr-one {
-    background-color: #B9B739;
+    background-color: #5d95b1;
 }
 
 .bk-clr-two {
-    background-color: #F94C4C;
+    background-color: #d28e8e;
 }
 
 .bk-clr-three {
-    background-color: #119c7e;
+    background-color: #8e668d;
 }
 
 .bk-clr-four {
-    background-color: #b739b9;
+    background-color: #cad27f;
 }
 
 .dashboard-div-icon {
