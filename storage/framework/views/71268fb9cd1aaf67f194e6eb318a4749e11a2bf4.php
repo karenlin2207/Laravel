@@ -28,7 +28,8 @@
                                 <td>{{product.market_price}}</td>
                                 <td>{{product.sale_price}}</td>
                                 <td v-html="product.describe"></td>
-                                <td><label class="label label-success">顯示</label></td>
+                                <td v-if="product.is_show"><label @click="notshow(product)" class="label label-success">顯示</label></td>
+                                <td v-else><label @click="show(product)"  class="label label-danger">不顯示</label></td>
                                 <td>
                                     <a @click="edit(product)" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i>編輯</a> 
                                     <a @click="remove(product)" class="btn btn-xs btn-danger"><i class="fa fa-pencil"></i>刪除</a>
@@ -71,12 +72,22 @@
                         },
                         remove:function(product){
                             var post_ary = { _method:'delete', _token: "<?php echo e(csrf_token()); ?>"};
-                            $.post('http://homestead.app/api/products/'+product.id, post_ary , function(){
+                            $.post('http://homestead.app/api/products/'+product.id, post_ary, function(){
                                 this.products.splice(this.products.indexOf(product),1);
                             }.bind(this));
                         },
                         edit:function(product){
                             window.location.href = '/admin/products/edit/' + product.id;
+                        },
+                        show:function(product){
+                            var post_ary = { _method:'PUT', _token: "<?php echo e(csrf_token()); ?>", is_show:1};
+                            $.post('http://homestead.app/api/products/'+product.id, post_ary);
+                            this.fetch();
+                        },
+                        notshow:function(product){
+                            var post_ary = { _method:'PUT', _token: "<?php echo e(csrf_token()); ?>", is_show:0};
+                            $.post('http://homestead.app/api/products/'+product.id, post_ary);
+                            this.fetch();
                         }
                     }
                 });

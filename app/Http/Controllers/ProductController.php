@@ -84,7 +84,11 @@ class ProductController extends Controller
         
         if ($request['tags']!='') {
             $tags = explode(',', $request['tags']);
-
+            foreach ($tags as $tag) {
+                if (trim($tag)==''){
+                    $tags = array_pop($tags);
+                }
+            }
             $product->retag($tags);
         }
 
@@ -106,5 +110,9 @@ class ProductController extends Controller
     {
         $product->delete();
         return redirect('/admin/products');
+    }
+
+    public function updateshow(Request $request){
+        
     }
 }
