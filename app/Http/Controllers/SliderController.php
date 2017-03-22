@@ -10,9 +10,6 @@ class SliderController extends Controller
 {
     public function index()
     {
-    	// $sliders = Slider::all();
-     	// return view('slider.index', compact('sliders'));
-
         return response()->json(Slider::all());
     }
 
@@ -87,5 +84,10 @@ class SliderController extends Controller
     {
         $slider->delete();
         return redirect('/admin/sliders');
+    }
+
+    public function changeStatus(Request $request, Slider $slider){
+        $request = $request->all();
+        $slider->update($request);
     }
 }

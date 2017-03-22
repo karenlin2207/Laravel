@@ -9,7 +9,7 @@ class Article extends Model
 {
     use Taggable;
 
-    protected $visible = ['user_id', 'type', 'title', 'short_describe', 'describe', 'img_url', 'is_show'];
+    protected $visible = ['id', 'user_id', 'type', 'title', 'short_describe', 'describe', 'img_uri', 'is_show'];
     //
     protected $fillable = ['user_id', 'type','title', 'short_describe', 'describe', 'img_uri', 'is_show'];
 

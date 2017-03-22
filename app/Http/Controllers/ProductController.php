@@ -92,7 +92,7 @@ class ProductController extends Controller
             $product->retag($tags);
         }
 
-        
+
 
         $product = Product::find($product->id);
         $product->update($request);
@@ -103,16 +103,10 @@ class ProductController extends Controller
     public function changeStatus(Request $request, Product $product){
         $request = $request->all();
         $product->update($request);
-        return redirect('/admin/products');
     }
 
     public function delete(Product $product)
     {
         $product->delete();
-        return redirect('/admin/products');
-    }
-
-    public function updateshow(Request $request){
-        
     }
 }

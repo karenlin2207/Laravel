@@ -20,9 +20,9 @@
                     {{ method_field('PUT') }}
                 <div class="panel-body">
                     <label>名稱 : </label>
-                    <input type="text" class="form-control" name="name" value="{{$product->name}}" />
+                    <input type="text" class="form-control" name="name" value="{{empty(old('name'))?$product->name:old('name')}}" />
                     <label>市價 : </label>
-                    <input type="text" class="form-control" name="market_price" value="{{$product->market_price}}" />
+                    <input type="text" class="form-control" name="market_price" value="{{empty(old('market_price'))?$product->market_price:old('market_price')}}" />
                     <label>售價 : </label>
                     <input type="text" class="form-control" name="sale_price" value="{{empty(old('sale_price'))?$product->sale_price:old('sale_price')}}" />
                     <label>商品tags : </label>
@@ -43,7 +43,7 @@
                                 ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
                             });
                         </script>
-                    <label><input type="checkbox" name="is_show" value='1' checked>是否顯示</label>
+                    <label><input type="checkbox" name="is_show" value='1' @if($product->is_show==1) checked @endif>是否顯示</label>
                     <hr />
                     <button class="btn btn-success" type="submit">Submit</button>
                 </div>
