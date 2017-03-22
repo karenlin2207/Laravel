@@ -20,6 +20,7 @@ Route::get('/user', function (Request $request) {
 Route::group(['prefix' => 'products'], function(){
 	Route::get('/', 'ProductController@index');
 	Route::delete('{product}', 'ProductController@delete');
+	Route::put('/{product}', 'ProductController@changeStatus');
 });
 Route::group(['prefix' => 'articles'], function(){
 	Route::get('/', 'ArticleController@index');

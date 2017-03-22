@@ -26,7 +26,8 @@
                     <label>售價 : </label>
                     <input type="text" class="form-control" name="sale_price" value="{{empty(old('sale_price'))?$product->sale_price:old('sale_price')}}" />
                     <label>商品tags : </label>
-                    <input type="text" class="form-control" name="tags" value="@foreach($project->tags as $tag) {{$tag->name}},@endforeach {{old('tags')}}"/>
+                    <input type="text" class="form-control" name="tags"
+                    value="@foreach($product->tags as $tag)@if($tag){{$tag->name}},@endif @endforeach" />
 
                     <label>商品圖片 :  <img src="{{$product->img_uri}}" style="width: 30px;"></label>
                     <input type="file" class="form-control" id="user_icon_file" name="user_icon_file" placeholder="上傳圖片">

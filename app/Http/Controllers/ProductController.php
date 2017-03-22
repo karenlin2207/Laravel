@@ -81,9 +81,18 @@ class ProductController extends Controller
         } else {
             $request['is_show'] = false;
         }
-        $tags = explode(',', $request->get('tags'));
+        
+        if ($request['tags']!='') {
+            $tags = explode(',', $request['tags']);
+            foreach ($tags as $tag) {
+                if (trim($tag)==''){
+                    $tags = array_pop($tags);
+                }
+            }
+            $product->retag($tags);
+        }
 
-        $product->tag($tags);
+        
 
         $product = Product::find($product->id);
         $product->update($request);
@@ -101,5 +110,9 @@ class ProductController extends Controller
     {
         $product->delete();
         return redirect('/admin/products');
+    }
+
+    public function updateshow(Request $request){
+        
     }
 }
