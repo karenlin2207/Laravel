@@ -82,7 +82,28 @@ class ArticleController extends Controller
 
     public function detail(Article $article)
     {
+        $article->article_time = date('Y-m-d', strtotime($article->updated_at));
         return view('article.detail', compact('article'));
+    }
+
+    public function listNew()
+    {
+        $articles = Article::where('type', 'new')->get();
+        foreach ($articles as $article) {
+            $article->article_time = date('Y-m-d', strtotime($article->updated_at));
+        }
+
+        return view('article.list', compact('articles'));
+    }
+
+    public function listPromotion()
+    {
+        $articles = Article::where('type', 'promotion')->get();
+        foreach ($articles as $article) {
+            $article->article_time = date('Y-m-d', strtotime($article->updated_at));
+        }
+
+        return view('article.list', compact('articles'));
     }
 
     public function update(Request $request,Article $article)

@@ -8,14 +8,14 @@
 				<div class="col-sm-9">
 					<div class="col-sm-12 title">
 						<div class="col-sm-9">
-						<h1 clss="bold">{{$article->title}}</h1>
+						<h1 clss="bold">{{$product->title}}</h1>
 						</div>
 						<div class="col-sm-3">
-						<h1>{{$article->article_time}}</h1>
+						<h1>{{$product->product_time}}</h1>
 						</div>
 					</div>
 					<div class="col-sm-9">
-						{!! $article->describe !!}
+						{!! $product->describe !!}
 					</div>
 				</div>
 			</div>	
