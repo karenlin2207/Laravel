@@ -14,7 +14,7 @@
                 <div class="panel-heading">
                     編輯
                 </div>
-                <form method="POST" action="/admin/articles/<?php echo e($article->id); ?>" enctype="multipart/form-data"> 
+                <form method="POST" action="/admin/articles/<?php echo e($article->id); ?>" enctype="multipart/form-data">
                      <?php echo e(csrf_field()); ?>
 
                      <?php echo e(method_field('PUT')); ?>
@@ -22,7 +22,7 @@
                 <div class="panel-body">
                     <input type="hidden" name="type" value="<?php echo e($article->type); ?>">
                     <label>文章標題 : </label>
-                    <input type="text" class="form-control" name="title" value="<?php echo e($article->title); ?>"/>
+                    <input type="text" class="form-control" name="title" value="<?php echo e(empty(old('title'))?$article->title:old('title')); ?>"/>
                     <label>文章縮圖 : <img src="/uploads/<?php echo e($article->img_uri); ?>" style="width:30px;"></label>
                     <input type="file" class="form-control" id="user_icon_file" name="user_icon_file" placeholder="上傳圖片">
                     <label>文章內容 : </label>

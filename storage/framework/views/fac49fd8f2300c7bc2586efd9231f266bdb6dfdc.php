@@ -21,7 +21,7 @@
                 <div class="panel-body">
                     <input type="hidden" name="type" value="<?php echo e($type_enum); ?>">
                     <label>文章標題 : </label>
-                    <input type="text" class="form-control" name="title"/>
+                    <input type="text" class="form-control" name="title" value="<?php echo e(old('title')); ?>"/>
                     <label>文章縮圖 :  </label>
                     <input type="file" class="form-control" id="user_icon_file" name="user_icon_file" placeholder="上傳圖片">
                     <label>文章內容 : </label>

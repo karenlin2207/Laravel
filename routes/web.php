@@ -57,10 +57,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 	})->name('sliders.index');
 	Route::post('/', 'SliderController@store')->name('sliders.store');
 	Route::get('create', 'SliderController@create')->name('sliders.create');
-	Route::get('{product}', 'SliderController@show')->name('sliders.show');
-	Route::get('edit/{product}', 'SliderController@edit')->name('sliders.edit');
-	Route::put('{product}', 'SliderController@update')->name('sliders.update');
-	Route::delete('{product}', 'SliderController@delete')->name('sliders.delete');
+	Route::get('{slider}', 'SliderController@show')->name('sliders.show');
+	Route::get('edit/{slider}', 'SliderController@edit')->name('sliders.edit');
+	Route::put('{slider}', 'SliderController@update')->name('sliders.update');
+	Route::delete('{slider}', 'SliderController@delete')->name('sliders.delete');
 	});	
 });
 

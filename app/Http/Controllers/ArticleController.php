@@ -3,23 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\CreateArticleRequest;
 use App\Article;
 use Illuminate\Support\Facades\Input;
 
 class ArticleController extends Controller
 {
     //
-    public function index(){
-        return response()->json(Article::where('type', 'new')->get());
+    public function index($type){
+        return response()->json(Article::where('type', $type)->get());
     }
     public function newIndex()
     {
-        $articles = Article::where('type', 'new')->get();
         return view('article.index', [
             'type' =>'最新消息',
             'type_enum' => 'new'
-            ], compact('articles'));
+            ]);
     }
     public function newCreate()
     {
@@ -31,11 +29,10 @@ class ArticleController extends Controller
 
     public function promotionIndex()
     {
-        $articles = Article::where('type', 'promotion')->get();
         return view('article.index', [
             'type' =>'口碑分享',
             'type_enum' => 'promotion'
-            ], compact('articles'));
+            ]);
     }
     public function promotionCreate()
     {
@@ -56,7 +53,7 @@ class ArticleController extends Controller
         if (Input::hasFile('user_icon_file')) {
             $upload_success = $file->move($destination_path, $file_name);
         }
-        $request['img_uri'] = $file_name;
+        $request['img_uri'] = '/uploads/'. $file_name;
         $request['short_describe'] = 'test';
 
         if (isset($request['is_show'])) {
@@ -109,6 +106,7 @@ class ArticleController extends Controller
     public function update(Request $request,Article $article)
     {
         $file = Input::file('user_icon_file');
+        $request = $request->all();
         if ($file){
             $extension = $file->getClientOriginalExtension();
             $file_name = strval(time()).str_random(5).'.'.$extension;
@@ -117,7 +115,7 @@ class ArticleController extends Controller
             if (Input::hasFile('user_icon_file')) {
                 $upload_success = $file->move($destination_path, $file_name);
             }
-            $request['img_uri'] = $file_name;
+            $request['img_uri'] = '/uploads/'. $file_name;
         }
 
         if (isset($request['is_show'])) {
@@ -133,6 +131,10 @@ class ArticleController extends Controller
 
     public function delete(Article $article){
         $article->delete();
-        return redirect('/admin/articles/'.$article->type.'s');
+    }
+
+    public function changeStatus(Request $request, Article $article){
+        $request = $request->all();
+        $article->update($request);
     }
 }

@@ -15,14 +15,14 @@
                 <div class="panel-heading">
                     編輯
                 </div>
-                <form method="POST" action="/admin/articles/{{$article->id}}" enctype="multipart/form-data"> 
+                <form method="POST" action="/admin/articles/{{$article->id}}" enctype="multipart/form-data">
                      {{ csrf_field() }}
                      {{ method_field('PUT') }}
                 <div class="panel-body">
                     <input type="hidden" name="type" value="{{$article->type}}">
                     <label>文章標題 : </label>
-                    <input type="text" class="form-control" name="title" value="{{$article->title}}"/>
-                    <label>文章縮圖 : <img src="/uploads/{{ $article->img_uri }}" style="width:30px;"></label>
+                    <input type="text" class="form-control" name="title" value="{{empty(old('title'))?$article->title:old('title')}}"/>
+                    <label>文章縮圖 : <img src="{{ $article->img_uri }}" style="width:30px;"></label>
                     <input type="file" class="form-control" id="user_icon_file" name="user_icon_file" placeholder="上傳圖片">
                     <label>文章內容 : </label>
                         <script id="container" name="describe" type="text/plain">
