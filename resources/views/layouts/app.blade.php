@@ -115,8 +115,8 @@ html, body {
             </div>
         </div>
     </section>
-    <!-- MENU SECTION END-->        
-
+    <!-- MENU SECTION END-->
+        @include('layouts.message')
         @yield('content')
         @yield('script')
     <!-- CONTENT-WRAPPER SECTION END-->

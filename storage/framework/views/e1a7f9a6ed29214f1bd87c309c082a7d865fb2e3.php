@@ -64,13 +64,13 @@
                 methods: {
                     fetch: function () {
                         var self = this;
-                        $.get('http://shawn.app/api/articles/' + type_enum, function (articles) {
+                        $.get('http://homestead.app/api/articles/' + type_enum, function (articles) {
                             self.articles = articles;
                         });
                     },
                     remove: function (article) {
                         var post_ary = {_method: 'delete', _token: "<?php echo e(csrf_token()); ?>"};
-                        $.post('http://shawn.app/api/articles/' + article.id, post_ary, function () {
+                        $.post('http://homestead.app/api/articles/' + article.id, post_ary, function () {
                             this.articles.splice(this.articles.indexOf(article), 1);
                         }.bind(this));
                     },
@@ -79,12 +79,12 @@
                     },
                     show: function (article) {
                         var post_ary = {_method: 'PUT', _token: "<?php echo e(csrf_token()); ?>", is_show: 1};
-                        $.post('http://shawn.app/api/articles/' + article.id, post_ary);
+                        $.post('http://homestead.app/api/articles/' + article.id, post_ary);
                         this.fetch();
                     },
                     notshow: function (article) {
                         var post_ary = {_method: 'PUT', _token: "<?php echo e(csrf_token()); ?>", is_show: 0};
-                        $.post('http://shawn.app/api/articles/' + article.id, post_ary);
+                        $.post('http://homestead.app/api/articles/' + article.id, post_ary);
                         this.fetch();
                     }
                 }

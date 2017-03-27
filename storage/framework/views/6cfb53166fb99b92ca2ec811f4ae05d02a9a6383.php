@@ -3,18 +3,17 @@
 	<div class="row">
 		<div class="col-sm-offset-2">
 			<?php $__currentLoopData = $articles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $article): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-			<div class="inner">
-				<div class="col-sm-10">
-					<div class="col-sm-12 title">
-						<div class="col-sm-9">
-						<h1 clss="bold"><?php echo e($article->title); ?></h1>
-						</div>
-						<div class="col-sm-3">
-						<h1><?php echo e($article->article_time); ?></h1>
-						</div>
+			<div class="panel-default col-sm-9">
+				<div class="panel-heading">
+					<h1 class="panel-title pull-left"><?php echo e($article->title); ?></h1>
+					<h6 class="panel-title pull-right"><?php echo e($article->article_time); ?></h6>
+				</div>
+				<div class="panel-content">
+					<div class="col-sm-6">
+						content
 					</div>
-					<div class="col-sm-12">
-						<img src="/uploads/<?php echo e($article->img_uri); ?>">
+					<div class="col-sm-6">
+						<img src="<?php echo e($article->img_uri); ?>">
 					</div>
 				</div>
 			</div>

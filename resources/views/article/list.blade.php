@@ -5,18 +5,17 @@
 	<div class="row">
 		<div class="col-sm-offset-2">
 			@foreach($articles as $article)
-			<div class="inner">
-				<div class="col-sm-10">
-					<div class="col-sm-12 title">
-						<div class="col-sm-9">
-						<h1 clss="bold">{{$article->title}}</h1>
-						</div>
-						<div class="col-sm-3">
-						<h1>{{$article->article_time}}</h1>
-						</div>
+			<div class="panel-default col-sm-9">
+				<div class="panel-heading">
+					<h1 class="panel-title pull-left">{{$article->title}}</h1>
+					<h6 class="panel-title pull-right">{{$article->article_time}}</h6>
+				</div>
+				<div class="panel-content">
+					<div class="col-sm-6">
+						content
 					</div>
-					<div class="col-sm-12">
-						<img src="/uploads/{{ $article->img_uri }}">
+					<div class="col-sm-6">
+						<img src="{{ $article->img_uri }}">
 					</div>
 				</div>
 			</div>
