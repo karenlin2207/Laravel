@@ -1,6 +1,4 @@
-@extends('layouts.page')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <link rel="stylesheet" href="/assets/css/main.css">
 <div id="main" class="container">
 	<div class="row">
@@ -8,10 +6,10 @@
 			<div class="tiles">
 				<article class="style1">
 					<span class="image">
-						<img src="{{ $product->img_uri }}" alt="">
+						<img src="<?php echo e($product->img_uri); ?>" alt="">
 					</span>
 					<a href="generic.html">
-						<h2>{{$product->name}}</h2>
+						<h2><?php echo e($product->name); ?></h2>
 						<div class="content">
 							{!$product->describe!}
 						</div>
@@ -21,4 +19,6 @@
 		</div>
 	</div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.page', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

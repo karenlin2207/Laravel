@@ -22,6 +22,8 @@
                     <input type="text" class="form-control" name="name"/>
                     <label>圖片 :  </label>
                     <input type="file" class="form-control" id="user_icon_file" name="user_icon_file" placeholder="上傳圖片">
+                    <label>超連結網址 :  </label>
+                    <input type="text" class="form-control" name="link"/>
                     <label><input type="checkbox" name="is_show" value='1' checked>是否顯示</label>
                     <hr />
                     <button class="btn btn-success" type="submit">Submit</button>

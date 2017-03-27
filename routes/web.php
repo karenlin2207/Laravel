@@ -20,7 +20,7 @@ Route::get('/articles/{article}', 'ArticleController@detail');
 Route::get('/news', 'ArticleController@listNew')->name('articles.new');
 Route::get('/promotions', 'ArticleController@listPromotion')->name('articles.promotion');
 Route::get('/products/{product}', 'ProductController@detail');
-Route::get('/products', 'ProductController@listNew')->name('products.new');
+Route::get('/products', 'ProductController@list')->name('products.new');
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){

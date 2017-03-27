@@ -19,6 +19,22 @@ class ProductController extends Controller
     	return view('product.create');
     }
 
+    public function detail(Product $product)
+    {
+        return view('product.detail', compact('product'));
+    }
+
+    public function list()
+    {
+        $products = Product::where('is_show', true)->get();
+
+        foreach ($products as $product) {
+            $product->index = rand(1,6);
+        }
+        
+        return view('product.list', compact('products'));
+    }
+
     public function store(Request $request)
     {
         $file = Input::file('user_icon_file');

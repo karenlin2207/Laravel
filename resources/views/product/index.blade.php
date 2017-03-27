@@ -5,7 +5,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h4 class="page-head-line">所有車款</h4>
+                <h4 class="page-head-line">所有車款
+                <a class="btn btn-xs btn-primary" href="/admin/products/create">新增</a></h4>
             </div>
         </div>
         <div class="row">

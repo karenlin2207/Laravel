@@ -3,7 +3,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h4 class="page-head-line"><?php echo e($type); ?></h4>
+                    <h4 class="page-head-line"><?php echo e($type); ?>
+
+                    <a class="btn btn-xs btn-primary" href="/admin/articles/<?php echo e($type_enum); ?>/create">新增</a></h4>
                 </div>
             </div>
             <div class="row">

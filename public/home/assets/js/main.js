@@ -427,6 +427,7 @@ var main = (function($) { var _ = {
 							$slideImage: null,
 							$slideCaption: null,
 							url: $thumbnail.children('.slider').attr('src'),
+							link: $thumbnail.attr('href'),
 							loaded: false
 						};
 
@@ -436,7 +437,7 @@ var main = (function($) { var _ = {
 					// Slide.
 
 						// Create elements.
-	 						s.$slide = $('<div class="slide"><div class="caption"></div><div class="image"></div></div>');
+	 						s.$slide = $('<div class="slide"><a href=""><div class="caption"></div><div class="image"></div></a></div>');
 
 	 					// Image.
  							s.$slideImage = s.$slide.children('.image');

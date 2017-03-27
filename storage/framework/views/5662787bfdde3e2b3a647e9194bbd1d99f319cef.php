@@ -3,7 +3,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h4 class="page-head-line">首頁導覽圖列表</h4>
+                    <h4 class="page-head-line">首頁導覽圖列表
+                    <a class="btn btn-xs btn-primary" href="/admin/sliders/create">新增</a></h4>
                 </div>
             </div>
             <div class="row">
@@ -14,6 +15,7 @@
                             <tr>
                                 <th>縮圖</th>
                                 <th>標題</th>
+                                <th>超連結網址</th>
                                 <th>是否顯示</th>
                                 <th>操作</th>
                             </tr>
@@ -22,6 +24,7 @@
                             <tr v-for="slider in sliders" :data-id="slider.id">
                                 <td><img :src="slider.img_uri" style="width:30px;"></td>
                                 <td>{{slider.name}}</td>
+                                <td>{{slider.link}}</td>
                                 <td v-if="slider.is_show"><label @click="notshow(slider)" class="label label-success">
                                     顯示</label></td>
                                 <td v-else><label @click="show(slider)"  class="label label-danger">不顯示</label></td>
@@ -62,13 +65,13 @@
                 methods: {
                     fetch: function () {
                         var self = this;
-                        $.get('http://shawn.app/api/sliders/', function (sliders) {
+                        $.get('http://homestead.app/api/sliders/', function (sliders) {
                             self.sliders = sliders;
                         });
                     },
                     remove: function (slider) {
                         var post_ary = {_method: 'delete', _token: "<?php echo e(csrf_token()); ?>"};
-                        $.post('http://shawn.app/api/sliders/' + slider.id, post_ary, function () {
+                        $.post('http://homestead.app/api/sliders/' + slider.id, post_ary, function () {
                             this.sliders.splice(this.sliders.indexOf(sliders), 1);
                         }.bind(this));
                     },
@@ -78,12 +81,12 @@
                     },
                     show: function (slider) {
                         var post_ary = {_method: 'PUT', _token: "<?php echo e(csrf_token()); ?>", is_show: 1};
-                        $.post('http://shawn.app/api/sliders/' + slider.id, post_ary);
+                        $.post('http://homestead.app/api/sliders/' + slider.id, post_ary);
                         this.fetch();
                     },
                     notshow: function (slider) {
                         var post_ary = {_method: 'PUT', _token: "<?php echo e(csrf_token()); ?>", is_show: 0};
-                        $.post('http://shawn.app/api/sliders/' + slider.id, post_ary);
+                        $.post('http://homestead.app/api/sliders/' + slider.id, post_ary);
                         this.fetch();
                     }
                 }

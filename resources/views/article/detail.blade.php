@@ -9,7 +9,7 @@
 					<h1 class="panel-title pull-left">{{$article->title}}</h1>
 					<h6 class="panel-title pull-right">{{$article->article_time}}</h6>
 				</div>
-					<div class="col-sm-9">
+					<div class="col-sm-12">
 						{!! $article->describe !!}
 					</div>
 				</div>
