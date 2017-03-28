@@ -17,13 +17,12 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->String('name');
             $table->Integer('user_id');
-            $table->Integer('category_id');
             $table->Integer('sale_price');
             $table->Integer('market_price');
             $table->boolean('is_show');
             $table->string('img_uri');
-            $table->String('short_describe');
-            $table->String('describe');
+            $table->text('short_describe');
+            $table->text('describe');
             $table->timestamps();
         });
     }

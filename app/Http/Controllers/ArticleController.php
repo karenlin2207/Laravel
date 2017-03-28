@@ -54,7 +54,6 @@ class ArticleController extends Controller
             $upload_success = $file->move($destination_path, $file_name);
         }
         $request['img_uri'] = '/uploads/'. $file_name;
-        $request['short_describe'] = 'test';
 
         if (isset($request['is_show'])) {
             $request['is_show'] = true;
@@ -64,9 +63,12 @@ class ArticleController extends Controller
 
         $article = $request->user()->articles()->create($request->all());
 
-        $tags = explode(',', $request->get('tags'));
 
-        $article->tag($tags);
+        if ($request['tags']!='') {
+            $tags = explode(',', $request['tags']);
+            $article->tag($tags);
+        }
+
 
         return redirect('/admin/articles/'.$request->type.'s');
     }

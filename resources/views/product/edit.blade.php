@@ -28,9 +28,10 @@
                     <label>商品tags : </label>
                     <input type="text" class="form-control" name="tags"
                     value="@foreach($product->tags as $tag)@if($tag){{$tag->name}},@endif @endforeach" />
-
                     <label>商品圖片 :  <img src="{{$product->img_uri}}" style="width: 30px;"></label>
                     <input type="file" class="form-control" id="user_icon_file" name="user_icon_file" placeholder="上傳圖片">
+                    <label>簡短描述 : </label>
+                    <textarea class="form-control" name="short_describe">{{$product->short_describe}}</textarea>
                     <label>商品介紹 : </label>
                         <script id="container" name="describe" type="text/plain">
                         {!!$product->describe!!}

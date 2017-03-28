@@ -30,7 +30,7 @@
                                 <td>@{{product.name}}</td>
                                 <td>@{{product.market_price}}</td>
                                 <td>@{{product.sale_price}}</td>
-                                <td v-html="product.describe"></td>
+                                <td>@{{product.short_describe}}</td>
                                 <td v-if="product.is_show"><label @click="notshow(product)" class="label label-success">顯示</label></td>
                                 <td v-else><label @click="show(product)"  class="label label-danger">不顯示</label></td>
                                 <td>

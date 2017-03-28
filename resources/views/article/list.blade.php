@@ -12,7 +12,7 @@
 				</div>
 				<div class="panel-content">
 					<div class="col-sm-6">
-						content
+						{{$article->short_describe}}
 					</div>
 					<div class="col-sm-6">
 						<img src="{{ $article->img_uri }}">

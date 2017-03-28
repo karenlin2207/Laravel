@@ -12,7 +12,6 @@
 					<a href="/products/<?php echo e($product->id); ?>">
 						<h2><?php echo e($product->name); ?></h2>
 						<div class="content">
-							{!$product->describe!}
 						</div>
 					</a>
 				</article>

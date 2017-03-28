@@ -28,6 +28,8 @@
                     <label>文章tags : </label>
                     <input type="text" class="form-control" name="tags"
                     value="<?php $__currentLoopData = $article->tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?><?php if($tag): ?><?php echo e($tag->name); ?>,<?php endif; ?> <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>" />
+                    <label>簡短描述 : </label>
+                    <textarea class="form-control" name="short_describe"/><?php echo e($article->short_describe); ?></textarea>
                     <label>文章內容 : </label>
                         <script id="container" name="describe" type="text/plain">
                         <?php echo $article->describe; ?>

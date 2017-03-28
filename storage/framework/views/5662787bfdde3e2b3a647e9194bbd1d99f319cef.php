@@ -72,7 +72,7 @@
                     remove: function (slider) {
                         var post_ary = {_method: 'delete', _token: "<?php echo e(csrf_token()); ?>"};
                         $.post('http://homestead.app/api/sliders/' + slider.id, post_ary, function () {
-                            this.sliders.splice(this.sliders.indexOf(sliders), 1);
+                            this.sliders.splice(this.sliders.indexOf(slider), 1);
                         }.bind(this));
                     },
                     edit: function (slider) {

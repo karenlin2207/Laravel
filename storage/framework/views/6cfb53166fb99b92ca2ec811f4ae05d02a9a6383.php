@@ -10,7 +10,8 @@
 				</div>
 				<div class="panel-content">
 					<div class="col-sm-6">
-						content
+						<?php echo e($article->short_describe); ?>
+
 					</div>
 					<div class="col-sm-6">
 						<img src="<?php echo e($article->img_uri); ?>">
