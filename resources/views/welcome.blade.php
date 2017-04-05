@@ -87,7 +87,7 @@
                     <section id="thumbnails">
                         @foreach($articles as $article)
                         <article>
-                            <a class="thumbnail" href="articles/{{$article->id}}"><img src="/uploads/{{$article->img_uri}}" alt="" /></a>
+                            <a class="thumbnail" href="articles/{{$article->id}}"><img src="{{$article->img_uri}}" alt="" /></a>
                         </article>
                         @endforeach
                     </section>
@@ -95,7 +95,7 @@
                     <section id="sliders">
                         @foreach($sliders as $slider)
                         <slider>
-                            <a class="thumbnail" href=""><img class="slider" src="{{$slider->img_uri}}" alt="" style="display:none"/></a>
+                            <a class="thumbnail" href="{{$slider->link}}"><img class="slider" src="{{$slider->img_uri}}" alt="" style="display:none"/></a>
                         </slider>
                         @endforeach
                     </section>

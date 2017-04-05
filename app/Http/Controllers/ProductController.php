@@ -19,6 +19,22 @@ class ProductController extends Controller
     	return view('product.create');
     }
 
+    public function detail(Product $product)
+    {
+        return view('product.detail', compact('product'));
+    }
+
+    public function list()
+    {
+        $products = Product::where('is_show', true)->get();
+
+        foreach ($products as $product) {
+            $product->index = rand(1,6);
+        }
+        
+        return view('product.list', compact('products'));
+    }
+
     public function store(Request $request)
     {
         $file = Input::file('user_icon_file');
@@ -31,20 +47,18 @@ class ProductController extends Controller
             $upload_success = $file->move($destination_path, $file_name);
         }
         $request['img_uri'] = '/uploads/'. $file_name;
-        $request['short_describe'] = 'test';
-        $request['category_id'] = 1;
 
         if (isset($request['is_show'])) {
             $request['is_show'] = true;
         } else {
             $request['is_show'] = false;
         }
-
         $product = $request->user()->products()->create($request->all());
 
-        $tags = explode(',', $request->get('tags'));
-
-        $product->tag($tags);
+        if ($request['tags']!='') {
+            $tags = explode(',', $request['tags']);
+            $product->tag($tags);
+        }
 
 
         return redirect('/admin/products');
@@ -74,7 +88,6 @@ class ProductController extends Controller
             }
             $request['img_uri'] = '/uploads/'. $file_name;
         }
-        $request['short_describe'] = 'test';
 
         if (isset($request['is_show'])) {
             $request['is_show'] = true;

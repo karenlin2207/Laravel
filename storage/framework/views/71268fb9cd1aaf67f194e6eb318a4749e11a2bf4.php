@@ -3,7 +3,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h4 class="page-head-line">所有車款</h4>
+                <h4 class="page-head-line">所有車款
+                <a class="btn btn-xs btn-primary" href="/admin/products/create">新增</a></h4>
             </div>
         </div>
         <div class="row">
@@ -27,7 +28,7 @@
                                 <td>{{product.name}}</td>
                                 <td>{{product.market_price}}</td>
                                 <td>{{product.sale_price}}</td>
-                                <td v-html="product.describe"></td>
+                                <td>{{product.short_describe}}</td>
                                 <td v-if="product.is_show"><label @click="notshow(product)" class="label label-success">顯示</label></td>
                                 <td v-else><label @click="show(product)"  class="label label-danger">不顯示</label></td>
                                 <td>
@@ -66,28 +67,27 @@
                     methods:{
                         fetch:function(){
                             var self = this;
-                            $.get('http://shawn.app/api/products/', function(products){
+                            $.get('http://homestead.app/api/products/', function(products){
                                 self.products = products;
                             });
                         },
                         remove:function(product){
                             var post_ary = { _method:'delete', _token: "<?php echo e(csrf_token()); ?>"};
-                            $.post('http://shawn.app/api/products/'+product.id, post_ary, function(){
+                            $.post('http://homestead.app/api/products/'+product.id, post_ary, function(){
                                 this.products.splice(this.products.indexOf(product),1);
                             }.bind(this));
                         },
                         edit:function(product){
-                            alert(product.id);
                             window.location.href = '/admin/products/edit/' + product.id;
                         },
                         show:function(product){
                             var post_ary = { _method:'PUT', _token: "<?php echo e(csrf_token()); ?>", is_show:1};
-                            $.post('http://shawn.app/api/products/'+product.id, post_ary);
+                            $.post('http://homestead.app/api/products/'+product.id, post_ary);
                             this.fetch();
                         },
                         notshow:function(product){
                             var post_ary = { _method:'PUT', _token: "<?php echo e(csrf_token()); ?>", is_show:0};
-                            $.post('http://shawn.app/api/products/'+product.id, post_ary);
+                            $.post('http://homestead.app/api/products/'+product.id, post_ary);
                             this.fetch();
                         }
                     }

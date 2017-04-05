@@ -57,7 +57,6 @@ class ArticleController extends Controller
             $upload_success = $file->move($destination_path, $file_name);
         }
         $request['img_uri'] = '/uploads/'. $file_name;
-        $request['short_describe'] = 'test';
 
         if (isset($request['is_show'])) {
             $request['is_show'] = true;
@@ -65,7 +64,14 @@ class ArticleController extends Controller
             $request['is_show'] = false;
         }
 
-        $request->user()->articles()->create($request->all());
+        $article = $request->user()->articles()->create($request->all());
+
+
+        if ($request['tags']!='') {
+            $tags = explode(',', $request['tags']);
+            $article->tag($tags);
+        }
+
 
         return redirect('/admin/articles/'.$request->type.'s');
     }
@@ -135,6 +141,16 @@ class ArticleController extends Controller
             $request['is_show'] = true;
         } else {
             $request['is_show'] = false;
+        }
+
+        if ($request['tags']!='') {
+            $tags = explode(',', $request['tags']);
+            foreach ($tags as $tag) {
+                if (trim($tag)==''){
+                    $tags = array_pop($tags);
+                }
+            }
+            $article->retag($tags);
         }
 
         $article = Article::find($article->id);

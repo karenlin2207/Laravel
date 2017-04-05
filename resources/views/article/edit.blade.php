@@ -24,6 +24,11 @@
                     <input type="text" class="form-control" name="title" value="{{empty(old('title'))?$article->title:old('title')}}"/>
                     <label>文章縮圖 : <img src="{{ $article->img_uri }}" style="width:30px;"></label>
                     <input type="file" class="form-control" id="user_icon_file" name="user_icon_file" placeholder="上傳圖片">
+                    <label>文章tags : </label>
+                    <input type="text" class="form-control" name="tags"
+                    value="@foreach($article->tags as $tag)@if($tag){{$tag->name}},@endif @endforeach" />
+                    <label>簡短描述 : </label>
+                    <textarea class="form-control" name="short_describe"/>{{$article->short_describe}}</textarea>
                     <label>文章內容 : </label>
                         <script id="container" name="describe" type="text/plain">
                         {!!$article->describe!!}

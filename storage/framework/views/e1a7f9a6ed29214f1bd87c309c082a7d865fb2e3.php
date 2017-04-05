@@ -3,7 +3,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h4 class="page-head-line"><?php echo e($type); ?></h4>
+                    <h4 class="page-head-line"><?php echo e($type); ?>
+
+                    <a class="btn btn-xs btn-primary" href="/admin/articles/<?php echo e($type_enum); ?>s/create">新增</a></h4>
                 </div>
             </div>
             <div class="row">
@@ -24,7 +26,7 @@
                             <tr v-for="article in articles" :data-id="article.id">
                                 <td><img :src="article.img_uri" style="width:30px;"></td>
                                 <td>{{article.title}}</td>
-                                <td v-html="article.describe"></td>
+                                <td>{{article.short_describe}}</td>
                                 <td v-if="article.is_show"><label @click="notshow(article)" class="label label-success">顯示</label></td>
                                 <td v-else><label @click="show(article)"  class="label label-danger">不顯示</label></td>
                                 <td>

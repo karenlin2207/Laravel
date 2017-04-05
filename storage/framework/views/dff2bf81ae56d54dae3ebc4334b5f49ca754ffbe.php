@@ -87,7 +87,7 @@
                     <section id="thumbnails">
                         <?php $__currentLoopData = $articles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $article): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                         <article>
-                            <a class="thumbnail" href="articles/<?php echo e($article->id); ?>"><img src="/uploads/<?php echo e($article->img_uri); ?>" alt="" /></a>
+                            <a class="thumbnail" href="articles/<?php echo e($article->id); ?>"><img src="<?php echo e($article->img_uri); ?>" alt="" /></a>
                         </article>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                     </section>
@@ -95,7 +95,7 @@
                     <section id="sliders">
                         <?php $__currentLoopData = $sliders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                         <slider>
-                            <a class="thumbnail" href=""><img class="slider" src="<?php echo e($slider->img_uri); ?>" alt="" style="display:none"/></a>
+                            <a class="thumbnail" href="<?php echo e($slider->link); ?>"><img class="slider" src="<?php echo e($slider->img_uri); ?>" alt="" style="display:none"/></a>
                         </slider>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                     </section>

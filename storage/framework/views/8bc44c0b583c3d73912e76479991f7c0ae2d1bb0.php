@@ -28,6 +28,8 @@
                     <input type="text" class="form-control" name="tags"/>
                     <label>商品圖片 :  </label>
                     <input type="file" class="form-control" id="user_icon_file" name="user_icon_file" placeholder="上傳圖片">
+                    <label>簡短描述 : </label>
+                    <textarea class="form-control" name="short_describe"></textarea>
                     <label>商品介紹 : </label>
                         <script id="container" name="describe" type="text/plain">
                         </script>

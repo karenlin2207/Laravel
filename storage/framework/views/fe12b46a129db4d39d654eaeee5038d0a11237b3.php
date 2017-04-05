@@ -7,7 +7,11 @@
 					<h1 class="panel-title pull-left"><?php echo e($article->title); ?></h1>
 					<h6 class="panel-title pull-right"><?php echo e($article->article_time); ?></h6>
 				</div>
+<<<<<<< HEAD
 					<div class="col-sm-9">
+=======
+					<div class="col-sm-12">
+>>>>>>> 17b97c09a2f7ff5fa32c54eb68d7a53635b4de30
 						<?php echo $article->describe; ?>
 
 					</div>
