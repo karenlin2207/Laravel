@@ -29,6 +29,8 @@
     25 => 'App\\Providers\\AuthServiceProvider',
     26 => 'App\\Providers\\EventServiceProvider',
     27 => 'App\\Providers\\RouteServiceProvider',
+    28 => 'Barryvdh\\Debugbar\\ServiceProvider',
+    29 => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
   ),
   'eager' => 
   array (
@@ -48,6 +50,7 @@
     13 => 'App\\Providers\\AuthServiceProvider',
     14 => 'App\\Providers\\EventServiceProvider',
     15 => 'App\\Providers\\RouteServiceProvider',
+    16 => 'Barryvdh\\Debugbar\\ServiceProvider',
   ),
   'deferred' => 
   array (
@@ -138,6 +141,14 @@
     'translation.loader' => 'Illuminate\\Translation\\TranslationServiceProvider',
     'validator' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
+    'Artesaos\\SEOTools\\Contracts\\SEOTools' => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
+    'Artesaos\\SEOTools\\Contracts\\MetaTags' => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
+    'Artesaos\\SEOTools\\Contracts\\TwitterCards' => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
+    'Artesaos\\SEOTools\\Contracts\\OpenGraph' => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
+    'seotools' => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
+    'seotools.metatags' => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
+    'seotools.opengraph' => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
+    'seotools.twitter' => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
   ),
   'when' => 
   array (
@@ -175,6 +186,9 @@
     array (
     ),
     'Illuminate\\Validation\\ValidationServiceProvider' => 
+    array (
+    ),
+    'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider' => 
     array (
     ),
   ),

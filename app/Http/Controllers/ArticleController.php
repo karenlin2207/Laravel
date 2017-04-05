@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 use Illuminate\Support\Facades\Input;
+use SEOMeta;
+use OpenGraph;
+use Twitter;
 
 class ArticleController extends Controller
 {
@@ -79,6 +82,16 @@ class ArticleController extends Controller
 
     public function detail(Article $article)
     {
+
+        SEOMeta::setTitle($article->title);
+        SEOMeta::setDescription($article->short_describe);
+        SEOMeta::addKeyword($article->tagNames());
+
+        OpenGraph::setUrl('http://current.url.com');
+        OpenGraph::setTitle($article->title);
+        OpenGraph::setDescription($article->short_describe);
+        OpenGraph::addProperty('type', 'articles');
+
         $article->article_time = date('Y-m-d', strtotime($article->updated_at));
         return view('article.detail', compact('article'));
     }
