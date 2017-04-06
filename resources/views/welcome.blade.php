@@ -95,7 +95,9 @@
                     <section id="sliders">
                         @foreach($sliders as $slider)
                         <slider>
-                            <a class="thumbnail" href="{{$slider->link}}"><img class="slider" src="{{$slider->img_uri}}" alt="" style="display:none"/></a>
+                            <a class="thumbnail" href="{{$slider->link}}">
+                                <img class="slider" src="{{$slider->img_uri}}" alt="{{$slider->describe}}" style="display:none"/>
+                            </a>
                         </slider>
                         @endforeach
                     </section>

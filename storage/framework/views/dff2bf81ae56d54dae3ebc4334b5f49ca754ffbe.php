@@ -95,7 +95,9 @@
                     <section id="sliders">
                         <?php $__currentLoopData = $sliders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                         <slider>
-                            <a class="thumbnail" href="<?php echo e($slider->link); ?>"><img class="slider" src="<?php echo e($slider->img_uri); ?>" alt="" style="display:none"/></a>
+                            <a class="thumbnail" href="<?php echo e($slider->link); ?>">
+                                <img class="slider" src="<?php echo e($slider->img_uri); ?>" alt="<?php echo e($slider->describe); ?>" style="display:none"/>
+                            </a>
                         </slider>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                     </section>

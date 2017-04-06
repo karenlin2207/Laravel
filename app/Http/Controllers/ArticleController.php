@@ -64,14 +64,18 @@ class ArticleController extends Controller
             $request['is_show'] = false;
         }
 
-        $article = $request->user()->articles()->create($request->all());
 
+        $article = $request->user()->articles()->create($request->all());
 
         if ($request['tags']!='') {
             $tags = explode(',', $request['tags']);
+            foreach ($tags as $tag) {
+                if (trim($tag)==''){
+                    $tags = array_pop($tags);
+                }
+            }
             $article->tag($tags);
         }
-
 
         return redirect('/admin/articles/'.$request->type.'s');
     }
@@ -93,7 +97,7 @@ class ArticleController extends Controller
         SEOMeta::setDescription($article->short_describe);
         SEOMeta::addKeyword($article->tagNames());
 
-        OpenGraph::setUrl('http://current.url.com');
+        //OpenGraph::setUrl('http://current.url.com');
         OpenGraph::setTitle($article->title);
         OpenGraph::setDescription($article->short_describe);
         OpenGraph::addProperty('type', 'articles');

@@ -19,6 +19,7 @@ class CreateSlidersTable extends Migration
             $table->string('img_uri');
             $table->boolean('is_show');
             $table->string('link');
+            $table->text('describe');
             $table->timestamps();
         });
     }

@@ -15,7 +15,7 @@
                 <div class="panel-heading">
                     編輯車款
                 </div>
-                <form method="POST" action="/admin/$slider/{{$slider->id}}" enctype="multipart/form-data">
+                <form method="POST" action="/admin/sliders/{{$slider->id}}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
                 <div class="panel-body">
@@ -25,6 +25,8 @@
                     <input type="file" class="form-control" id="user_icon_file" name="user_icon_file" placeholder="上傳圖片">
                     <label>超連結網址 :  </label>
                     <input type="text" class="form-control" name="link" value="{{$slider->link}}"/>
+                    <label>超連結文字描述 : </label>
+                    <textarea class="form-control" name="describe">{{$slider->describe}}</textarea>
                     <label><input type="checkbox" name="is_show" value='1' @if($slider->is_show==1) checked @endif>是否顯示</label>
                     <hr />
                     <button class="btn btn-success" type="submit">Submit</button>

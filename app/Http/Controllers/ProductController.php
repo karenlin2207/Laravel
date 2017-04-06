@@ -57,6 +57,11 @@ class ProductController extends Controller
 
         if ($request['tags']!='') {
             $tags = explode(',', $request['tags']);
+            foreach ($tags as $tag) {
+                if (trim($tag)==''){
+                    $tags = array_pop($tags);
+                }
+            }
             $product->tag($tags);
         }
 

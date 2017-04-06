@@ -16,11 +16,11 @@ Route::get('/', 'HomeController@index');
 Auth::routes();
 
 Route::get('/admin', 'HomeController@admin')->middleware('auth');
-Route::get('/articles/{article}', 'ArticleController@detail');
+Route::get('/articles/{article}', 'ArticleController@detail')->name('articles.detail');
 Route::get('/news', 'ArticleController@listNew')->name('articles.new');
 Route::get('/promotions', 'ArticleController@listPromotion')->name('articles.promotion');
-Route::get('/products/{product}', 'ProductController@detail');
-Route::get('/products', 'ProductController@list')->name('products.new');
+Route::get('/products/{product}', 'ProductController@detail')->name('products.detail');
+Route::get('/products', 'ProductController@list')->name('products.list');
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){

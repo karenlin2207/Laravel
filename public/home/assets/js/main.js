@@ -394,23 +394,23 @@ var main = (function($) { var _ = {
 	initViewer: function() {
 
 		// // Bind thumbnail click event.
-		// 	_.$thumbnails
-		// 		.on('click', '.thumbnail', function(event) {
+			_.$sliders
+				.on('click', '.slide', function(event) {
 
-		// 			var $this = $(this);
+					var $this = $(this);
 
-		// 			// Stop other events.
-		// 				event.preventDefault();
-		// 				event.stopPropagation();
+					// Stop other events.
+						event.preventDefault();
+						event.stopPropagation();
 
-		// 			// Locked? Blur.
-		// 				if (_.locked)
-		// 					$this.blur();
+					// Locked? Blur.
+						if (_.locked)
+							$this.blur();
 
-		// 			// Switch to this thumbnail's slide.
-		// 				_.switchTo($this.data('index'));
+					// Switch to this thumbnail's slide.
+						_.switchTo($this.data('index'));
 
-		// 		});
+				});
 
 		// Create slides from thumbnails.
 			_.$sliders.children()
@@ -428,6 +428,7 @@ var main = (function($) { var _ = {
 							$slideCaption: null,
 							url: $thumbnail.children('.slider').attr('src'),
 							link: $thumbnail.attr('href'),
+							describe: $thumbnail.children('.slider').attr('alt'),
 							loaded: false
 						};
 
@@ -437,7 +438,8 @@ var main = (function($) { var _ = {
 					// Slide.
 
 						// Create elements.
-	 						s.$slide = $('<div class="slide"><a href=""><div class="caption"></div><div class="image"></div></a></div>');
+	 						s.$slide = $('<div class="slide"><div class="caption"><a href="' + s.link + '">' +
+								'<textarea readonly>'+ s.describe +' </textarea></a></div><div class="image"></div></div>');
 
 	 					// Image.
  							s.$slideImage = s.$slide.children('.image');
