@@ -69,13 +69,13 @@
                     methods:{
                         fetch:function(){
                             var self = this;
-                            $.get('http://homestead.app/api/products/', function(products){
+                            $.get('/api/products/', function(products){
                                 self.products = products;
                             });
                         },
                         remove:function(product){
                             var post_ary = { _method:'delete', _token: "{{ csrf_token() }}"};
-                            $.post('http://homestead.app/api/products/'+product.id, post_ary, function(){
+                            $.post('/api/products/'+product.id, post_ary, function(){
                                 this.products.splice(this.products.indexOf(product),1);
                             }.bind(this));
                         },
@@ -84,12 +84,12 @@
                         },
                         show:function(product){
                             var post_ary = { _method:'PUT', _token: "{{ csrf_token() }}", is_show:1};
-                            $.post('http://homestead.app/api/products/'+product.id, post_ary);
+                            $.post('/api/products/'+product.id, post_ary);
                             this.fetch();
                         },
                         notshow:function(product){
                             var post_ary = { _method:'PUT', _token: "{{ csrf_token() }}", is_show:0};
-                            $.post('http://homestead.app/api/products/'+product.id, post_ary);
+                            $.post('/api/products/'+product.id, post_ary);
                             this.fetch();
                         }
                     }

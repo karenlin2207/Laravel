@@ -67,13 +67,13 @@
                 methods: {
                     fetch: function () {
                         var self = this;
-                        $.get('http://homestead.app/api/articles/' + type_enum, function (articles) {
+                        $.get('/api/articles/' + type_enum, function (articles) {
                             self.articles = articles;
                         });
                     },
                     remove: function (article) {
                         var post_ary = {_method: 'delete', _token: "{{ csrf_token() }}"};
-                        $.post('http://homestead.app/api/articles/' + article.id, post_ary, function () {
+                        $.post('/api/articles/' + article.id, post_ary, function () {
                             this.articles.splice(this.articles.indexOf(article), 1);
                         }.bind(this));
                     },
@@ -82,12 +82,12 @@
                     },
                     show: function (article) {
                         var post_ary = {_method: 'PUT', _token: "{{ csrf_token() }}", is_show: 1};
-                        $.post('http://homestead.app/api/articles/' + article.id, post_ary);
+                        $.post('/api/articles/' + article.id, post_ary);
                         this.fetch();
                     },
                     notshow: function (article) {
                         var post_ary = {_method: 'PUT', _token: "{{ csrf_token() }}", is_show: 0};
-                        $.post('http://homestead.app/api/articles/' + article.id, post_ary);
+                        $.post('/api/articles/' + article.id, post_ary);
                         this.fetch();
                     }
                 }

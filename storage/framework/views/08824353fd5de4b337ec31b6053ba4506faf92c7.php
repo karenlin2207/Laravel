@@ -60,7 +60,8 @@
                         <li><a href="<?php echo e(route('articles.new')); ?>">最新消息</a></li>
                         <li><a href="<?php echo e(route('articles.promotion')); ?>">口碑分享</a></li>
                         <li><a href="<?php echo e(route('products.list')); ?>">最新車款</a></li>
-                        <li><a href="<?php echo e(route('articles.promotion')); ?>">口碑分享</a></li>
+                        <li><a href="<?php echo e(route('articles.promotion')); ?>">關於我們</a></li>
+                        <li><a href="<?php echo e(route('articles.promotion')); ?>">聯絡我們</a></li>
 
                     </ul>
                 </div>
