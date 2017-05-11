@@ -1,24 +1,25 @@
 <?php $__env->startSection('content'); ?>
 <div id="main" class="container">
 	<div class="row">
-		<div class="col-sm-offset-2">
+		<div class="col-sm-offset-1">
 			<?php $__currentLoopData = $articles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $article): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-			<div class="panel-default col-sm-9">
+			<div class="panel-default col-sm-4">
+				<a href="/articles/<?php echo e($article->id); ?>">
 				<div class="panel-heading">
 					<h1 class="panel-title pull-left"><?php echo e($article->title); ?></h1>
 					<h6 class="panel-title pull-right"><?php echo e($article->article_time); ?></h6>
 				</div>
 				<div class="panel-content">
-					<div class="col-sm-6">
-						<?php echo e($article->short_describe); ?>
+					<?php echo e($article->short_describe); ?>
 
-					</div>
-					<div class="col-sm-6">
-						<img src="<?php echo e($article->img_uri); ?>">
-					</div>
+					<img class="title_img" src="<?php echo e($article->img_uri); ?>">
 				</div>
+				</a>
 			</div>
 			<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+		</div>
+		<div class="col-md-12 text-center">
+			<div class="pagination"> <?php echo e($articles->links()); ?> </div>
 		</div>
 	</div>
 </div>

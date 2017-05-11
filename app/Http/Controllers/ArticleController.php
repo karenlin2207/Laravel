@@ -108,7 +108,7 @@ class ArticleController extends Controller
 
     public function listNew()
     {
-        $articles = Article::where('type', 'new')->get();
+        $articles = Article::where('type', 'new')->where('is_show', true)->paginate();
         foreach ($articles as $article) {
             $article->article_time = date('Y-m-d', strtotime($article->updated_at));
         }
@@ -118,7 +118,7 @@ class ArticleController extends Controller
 
     public function listPromotion()
     {
-        $articles = Article::where('type', 'promotion')->get();
+        $articles = Article::where('type', 'promotion')->where('is_show', true)->paginate();
         foreach ($articles as $article) {
             $article->article_time = date('Y-m-d', strtotime($article->updated_at));
         }
