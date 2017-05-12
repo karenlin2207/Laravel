@@ -113,7 +113,8 @@ class ArticleController extends Controller
             $article->article_time = date('Y-m-d', strtotime($article->updated_at));
         }
 
-        return view('article.list', compact('articles'));
+        $type = "最新消息";
+        return view('article.list', compact('articles', 'type'));
     }
 
     public function listPromotion()
@@ -123,7 +124,8 @@ class ArticleController extends Controller
             $article->article_time = date('Y-m-d', strtotime($article->updated_at));
         }
 
-        return view('article.list', compact('articles'));
+        $type = "口碑分享";
+        return view('article.list', compact('articles', 'type'));
     }
 
     public function update(Request $request,Article $article)

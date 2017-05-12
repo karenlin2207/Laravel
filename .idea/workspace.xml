@@ -13,9 +13,11 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/cache/b8/4a/b84a788b2901cbf854eb9ab872ea97cff57fdb45" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/cache/b8/75/b8753a964ac8df879e7cb620ca2a9bbad2117d26" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/cache/e0/e8/e0e8ca9a8888cadf51be6b512365ca98f3635d7a" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/CsB4Gy9XfPyYo1unQVroBF0uG8BiwGuvFFN8op7C" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/DCAuyhajfD0ZHpqVZE7ryBXq2FBy6eI4L0UzJ9ty" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/MGSVKo7xhxfaz3hDUd9Qgxv7kZDLjKemX3b2leIz" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/OZskfem3x8HN461sR3p3ZkgsF0fJ6M08nemiRLNP" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/WUKvQxdjUe1Xhy1HAsTRDFjLr2NbliYLxBmZeBrf" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/bwWRI8bmYoUESEL6ze3jgBayEXIYHlZYw3rQ2hjc" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/mxs84oGv6EejGPs1sD1xL7E4b6vECx3h0ZAT7M5X" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mockery/mockery/_coveralls.yml" afterPath="" />
@@ -50,9 +52,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ArticleController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ArticleController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.css" afterPath="$PROJECT_DIR$/public/css/app.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/article/list.blade.php" afterPath="$PROJECT_DIR$/resources/views/article/list.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/cache/5f/3b/5f3b290ace274634cb4cda548d2867705dce11ec" afterPath="$PROJECT_DIR$/storage/framework/cache/5f/3b/5f3b290ace274634cb4cda548d2867705dce11ec" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/views/6cfb53166fb99b92ca2ec811f4ae05d02a9a6383.php" afterPath="$PROJECT_DIR$/storage/framework/views/6cfb53166fb99b92ca2ec811f4ae05d02a9a6383.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/views/71268fb9cd1aaf67f194e6eb318a4749e11a2bf4.php" afterPath="$PROJECT_DIR$/storage/framework/views/71268fb9cd1aaf67f194e6eb318a4749e11a2bf4.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/logs/laravel.log" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" />
     </list>
     <ignored path="Laravel.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -76,8 +77,8 @@
       <file leaf-file-name="app.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/css/app.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="5018" column="15" selection-start-line="5018" selection-start-column="15" selection-end-line="5018" selection-end-column="15" />
+            <state relative-caret-position="71">
+              <caret line="4998" column="0" selection-start-line="4998" selection-start-column="0" selection-end-line="4998" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -86,8 +87,8 @@
       <file leaf-file-name="ArticleController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticleController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="120" column="79" selection-start-line="120" selection-start-column="79" selection-end-line="120" selection-end-column="79" />
+            <state relative-caret-position="406">
+              <caret line="127" column="61" selection-start-line="127" selection-start-column="61" selection-end-line="127" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -96,9 +97,11 @@
       <file leaf-file-name="list.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/article/list.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
-              <folding />
+            <state relative-caret-position="144">
+              <caret line="8" column="88" selection-start-line="8" selection-start-column="88" selection-end-line="8" selection-end-column="88" />
+              <folding>
+                <element signature="e#314#320#1#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -142,9 +145,9 @@
         <option value="$PROJECT_DIR$/resources/views/article/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/product/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/slider/index.blade.php" />
-        <option value="$PROJECT_DIR$/public/css/app.css" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ArticleController.php" />
         <option value="$PROJECT_DIR$/resources/views/article/list.blade.php" />
+        <option value="$PROJECT_DIR$/public/css/app.css" />
       </list>
     </option>
   </component>
@@ -276,16 +279,16 @@
       <workItem from="1491444136220" duration="9500000" />
       <workItem from="1491534555481" duration="1463000" />
       <workItem from="1492662069447" duration="738000" />
-      <workItem from="1494301950292" duration="8611000" />
+      <workItem from="1494301950292" duration="16382000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50259000" />
+    <option name="totallyTimeSpent" value="58030000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1600" y="24" width="1366" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32503662" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -642,6 +645,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="700">
           <caret line="1087" column="29" selection-start-line="1087" selection-start-column="29" selection-end-line="1087" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -696,25 +700,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/css/app.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="5018" column="15" selection-start-line="5018" selection-start-column="15" selection-end-line="5018" selection-end-column="15" />
+        <state relative-caret-position="71">
+          <caret line="4998" column="0" selection-start-line="4998" selection-start-column="0" selection-end-line="4998" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticleController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="120" column="79" selection-start-line="120" selection-start-column="79" selection-end-line="120" selection-end-column="79" />
+        <state relative-caret-position="406">
+          <caret line="127" column="61" selection-start-line="127" selection-start-column="61" selection-end-line="127" selection-end-column="61" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/article/list.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
-          <folding />
+        <state relative-caret-position="144">
+          <caret line="8" column="88" selection-start-line="8" selection-start-column="88" selection-end-line="8" selection-end-column="88" />
+          <folding>
+            <element signature="e#314#320#1#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
