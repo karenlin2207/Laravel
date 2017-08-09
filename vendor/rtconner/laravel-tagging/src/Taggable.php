@@ -187,7 +187,7 @@ trait Taggable
 		foreach($tagNames as $tagSlug) {
 			$tags = Tagged::where('tag_slug', call_user_func($normalizer, $tagSlug))
 				->where('taggable_type', $className)
-				->pluck('taggable_id');
+				->get()->pluck('taggable_id');
 		
 			$primaryKey = $this->getKeyName();
 			$query->whereIn($this->getTable().'.'.$primaryKey, $tags);
@@ -218,10 +218,38 @@ trait Taggable
 		
 		$tags = Tagged::whereIn('tag_slug', $tagNames)
 			->where('taggable_type', $className)
-			->pluck('taggable_id');
+			->get()->pluck('taggable_id');
 		
 		$primaryKey = $this->getKeyName();
 		return $query->whereIn($this->getTable().'.'.$primaryKey, $tags);
+	}
+    
+    /**
+	 * Filter model to subset without the given tags
+	 *
+	 * @param $tagNames array|string
+	 */
+	public function scopeWithoutTags($query, $tagNames)
+	{
+		if(!is_array($tagNames)) {
+			$tagNames = func_get_args();
+			array_shift($tagNames);
+		}
+		
+		$tagNames = static::$taggingUtility->makeTagArray($tagNames);
+		
+		$normalizer = config('tagging.normalizer');
+		$normalizer = $normalizer ?: [static::$taggingUtility, 'slug'];
+		
+		$tagNames = array_map($normalizer, $tagNames);
+		$className = $query->getModel()->getMorphClass();
+		
+		$tags = Tagged::whereIn('tag_slug', $tagNames)
+			->where('taggable_type', $className)
+			->get()->pluck('taggable_id');
+		
+		$primaryKey = $this->getKeyName();
+		return $query->whereNotIn($this->getTable().'.'.$primaryKey, $tags);
 	}
 	
 	/**

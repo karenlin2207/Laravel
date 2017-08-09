@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="content-wrapper">
+    <div class="content-wrapper" id="list">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <h4 class="page-head-line">{{$type}}
+                    <input type="text" v-model:name="search_string" v-on:keyup="fetch">
                     <a class="btn btn-xs btn-primary" href="/admin/articles/{{$type_enum}}s/create">新增</a></h4>
                 </div>
             </div>
@@ -23,7 +24,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tbody id="list" >
+                            <tbody>
                             <tr v-for="article in articles" :data-id="article.id">
                                 <td><img :src="article.img_uri" style="width:30px;"></td>
                                 <td>@{{article.title}}</td>
@@ -55,11 +56,11 @@
     <script>
         $(function () {
             var type_enum = '{{ $type_enum }}';
-            console.log(type_enum);
             var vm = new Vue({
                 el: '#list',
                 data: {
-                    articles: []
+                    articles: [],
+                    search_string: ''
                 },
                 created: function () {
                     this.fetch()
@@ -67,7 +68,8 @@
                 methods: {
                     fetch: function () {
                         var self = this;
-                        $.get('/api/articles/' + type_enum, function (articles) {
+                        var post_ary = { _method: 'POST', _token: "{{ csrf_token() }}", search_string: this.search_string};
+                        $.post('/api/articles/' + type_enum, post_ary, function (articles) {
                             self.articles = articles;
                         });
                     },

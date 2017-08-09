@@ -41,7 +41,7 @@
                                 ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
                             });
                         </script>
-                    <label><input type="checkbox" name="is_show" value='1' @if($article->is_show==1) checked @endif>是否顯示</label>
+                    <label><input type="checkbox" name="is_show" value=1 @if($article->is_show==1) checked @endif>是否顯示</label>
                     <hr />
                     <button class="btn btn-default" type="submit"><i class=" fa fa-refresh "></i> Update</button>
                 </div>

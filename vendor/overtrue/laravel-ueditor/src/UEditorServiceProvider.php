@@ -1,17 +1,18 @@
 <?php
-/**
- * UEditorServiceProvider.php.
- *
- * This file is part of the laravel-ueditor.
+
+/*
+ * This file is part of the overtrue/laravel-ueditor.
  *
  * (c) overtrue <i@overtrue.me>
  *
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
+
 namespace Overtrue\LaravelUEditor;
 
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -38,11 +39,13 @@ class UEditorServiceProvider extends ServiceProvider
         ], 'assets');
 
         $this->publishes([
-            __DIR__.'/views'        => base_path('resources/views/vendor/ueditor'),
+            __DIR__.'/views' => base_path('resources/views/vendor/ueditor'),
             __DIR__.'/translations' => base_path('resources/lang/vendor/ueditor'),
         ], 'resources');
 
-        $this->registerRoute($router);
+        if (!app()->runningInConsole()) {
+            $this->registerRoute($router);
+        }
     }
 
     /**
@@ -52,7 +55,7 @@ class UEditorServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/config/ueditor.php', 'ueditor');
         $this->app->singleton('ueditor.storage', function ($app) {
-            return new StorageManager($app);
+            return new StorageManager(Storage::disk($app['config']->get('ueditor.disk', 'public')));
         });
     }
 
@@ -64,7 +67,7 @@ class UEditorServiceProvider extends ServiceProvider
     protected function registerRoute($router)
     {
         if (!$this->app->routesAreCached()) {
-            $router->group(['namespace' => __NAMESPACE__], function ($router) {
+            $router->group(array_merge(['namespace' => __NAMESPACE__], config('ueditor.route.options', [])), function ($router) {
                 $router->any(config('ueditor.route.name', '/ueditor/server'), 'UEditorController@serve');
             });
         }

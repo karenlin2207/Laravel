@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -17,12 +16,12 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->String('name');
             $table->Integer('user_id');
-            $table->Integer('sale_price');
-            $table->Integer('market_price');
-            $table->boolean('is_show');
-            $table->string('img_uri');
-            $table->text('short_describe');
-            $table->text('describe');
+            $table->Integer('sale_price')->nullable();
+            $table->Integer('market_price')->nullable();
+            $table->boolean('is_show')->default(0);
+            $table->string('img_uri')->nullable();
+            $table->text('short_describe')->nullable();
+            $table->text('describe')->nullable();
             $table->timestamps();
         });
     }

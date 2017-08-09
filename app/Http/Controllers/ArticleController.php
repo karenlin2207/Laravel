@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -12,72 +11,67 @@ use Twitter;
 class ArticleController extends Controller
 {
     //
-    public function index($type){
-        return response()->json(Article::where('type', $type)->get());
+    public function index($type, Request $request)
+    {
+        return response()->json(Article::where('title', 'like', '%' . $request['search_string'] . '%')->where('type', $type)->get());
     }
     public function newIndex()
     {
         return view('article.index', [
-            'type' =>'最新消息',
+            'type' => '最新消息',
             'type_enum' => 'new'
-            ]);
+        ]);
     }
     public function newCreate()
     {
         return view('article.create', [
             'type' => '最新消息',
             'type_enum' => 'new'
-            ]);
+        ]);
     }
 
     public function promotionIndex()
     {
         return view('article.index', [
-            'type' =>'口碑分享',
+            'type' => '口碑分享',
             'type_enum' => 'promotion'
-            ]);
+        ]);
     }
     public function promotionCreate()
     {
         return view('article.create', [
             'type' => '口碑分享',
             'type_enum' => 'promotion'
-            ]);
+        ]);
     }
 
     public function store(Request $request)
     {
         $file = Input::file('user_icon_file');
-        $extension = $file->getClientOriginalExtension();
-        $file_name = strval(time()).str_random(5).'.'.$extension;
+        if ($file) {
+            $extension = $file->getClientOriginalExtension();
+            $file_name = strval(time()) . str_random(5) . '.' . $extension;
 
-        $destination_path = public_path().'/uploads/';
+            $destination_path = public_path() . '/uploads/';
 
-        if (Input::hasFile('user_icon_file')) {
-            $upload_success = $file->move($destination_path, $file_name);
+            if (Input::hasFile('user_icon_file')) {
+                $upload_success = $file->move($destination_path, $file_name);
+            }
+            $request['img_uri'] = '/uploads/' . $file_name;
         }
-        $request['img_uri'] = '/uploads/'. $file_name;
-
-        if (isset($request['is_show'])) {
-            $request['is_show'] = true;
-        } else {
-            $request['is_show'] = false;
-        }
-
-
         $article = $request->user()->articles()->create($request->all());
 
-        if ($request['tags']!='') {
+        if ($request['tags'] != '') {
             $tags = explode(',', $request['tags']);
             foreach ($tags as $tag) {
-                if (trim($tag)==''){
+                if (trim($tag) == '') {
                     $tags = array_pop($tags);
                 }
             }
             $article->tag($tags);
         }
 
-        return redirect('/admin/articles/'.$request->type.'s');
+        return redirect('/admin/articles/' . $request->type . 's');
     }
 
     public function edit(Article $article)
@@ -128,31 +122,32 @@ class ArticleController extends Controller
         return view('article.list', compact('articles', 'type'));
     }
 
-    public function update(Request $request,Article $article)
+    public function update(Request $request, Article $article)
     {
         $file = Input::file('user_icon_file');
         $request = $request->all();
-        if ($file){
+        if ($file) {
             $extension = $file->getClientOriginalExtension();
-            $file_name = strval(time()).str_random(5).'.'.$extension;
-            $destination_path = public_path().'/uploads/';
+            $file_name = strval(time()) . str_random(5) . '.' . $extension;
+            $destination_path = public_path() . '/uploads/';
 
             if (Input::hasFile('user_icon_file')) {
                 $upload_success = $file->move($destination_path, $file_name);
             }
-            $request['img_uri'] = '/uploads/'. $file_name;
+            $request['img_uri'] = '/uploads/' . $file_name;
         }
 
         if (isset($request['is_show'])) {
             $request['is_show'] = true;
-        } else {
+        }
+        else {
             $request['is_show'] = false;
         }
 
-        if ($request['tags']!='') {
+        if ($request['tags'] != '') {
             $tags = explode(',', $request['tags']);
             foreach ($tags as $tag) {
-                if (trim($tag)==''){
+                if (trim($tag) == '') {
                     $tags = array_pop($tags);
                 }
             }
@@ -161,14 +156,16 @@ class ArticleController extends Controller
 
         $article = Article::find($article->id);
         $article->update($request);
-        return redirect('/admin/articles/'.$article->type.'s');
+        return redirect('/admin/articles/' . $article->type . 's');
     }
 
-    public function delete(Article $article){
+    public function delete(Article $article)
+    {
         $article->delete();
     }
 
-    public function changeStatus(Request $request, Article $article){
+    public function changeStatus(Request $request, Article $article)
+    {
         $request = $request->all();
         $article->update($request);
     }

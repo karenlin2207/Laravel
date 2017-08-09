@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="content-wrapper">
+    <div class="content-wrapper" id="list">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <h4 class="page-head-line">首頁導覽圖列表
+                    <input type="text" v-model:name="search_string" v-on:keyup="fetch">
                     <a class="btn btn-xs btn-primary" href="/admin/sliders/create">新增</a></h4>
                 </div>
             </div>
@@ -22,7 +23,7 @@
                                 <th>操作</th>
                             </tr>
                             </thead>
-                            <tbody id="list">
+                            <tbody>
                             <tr v-for="slider in sliders" :data-id="slider.id">
                                 <td><img :src="slider.img_uri" style="width:30px;"></td>
                                 <td>@{{slider.name}}</td>
@@ -59,7 +60,7 @@
                 el: '#list',
                 data: {
                     sliders: [],
-
+                    search_string: ''
                 },
                 created: function () {
                     this.fetch()
@@ -67,7 +68,8 @@
                 methods: {
                     fetch: function () {
                         var self = this;
-                        $.get('/api/sliders/', function (sliders) {
+                        var post_ary = { _method: 'post', _token: "{{ csrf_token() }}", search_string: this.search_string};
+                        $.post('/api/sliders/', post_ary, function (sliders) {
                             self.sliders = sliders;
                         });
                     },
@@ -78,7 +80,6 @@
                         }.bind(this));
                     },
                     edit: function (slider) {
-                        alert(slider.id);
                         window.location.href = '/admin/sliders/edit/' + slider.id;
                     },
                     show: function (slider) {

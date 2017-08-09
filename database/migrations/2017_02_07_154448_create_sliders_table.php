@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -16,8 +15,8 @@ class CreateSlidersTable extends Migration
         Schema::create('sliders', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('img_uri');
-            $table->boolean('is_show');
+            $table->string('img_uri')->nullable();
+            $table->boolean('is_show')->default(0);
             $table->string('link');
             $table->text('describe');
             $table->timestamps();

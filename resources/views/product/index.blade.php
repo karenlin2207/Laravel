@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="content-wrapper">
+<div class="content-wrapper" id="list">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h4 class="page-head-line">所有車款
+                <input type="text" v-model:name.trim="search_string" v-on:keyup="fetch">
                 <a class="btn btn-xs btn-primary" href="/admin/products/create">新增</a></h4>
             </div>
         </div>
@@ -24,7 +25,7 @@
                                 <th>操作</th>
                             </tr>
                         </thead>
-                        <tbody id="list" >
+                        <tbody>
                             <tr v-for="product in products" :data-id="product.id">
                                 <td><img :src="product.img_uri" style="width:30px;"></td>
                                 <td>@{{product.name}}</td>
@@ -61,7 +62,7 @@
                     el : '#list',
                     data:{
                         products: [],
-
+                        search_string: ''
                     },
                     created: function () {
                         this.fetch()
@@ -69,7 +70,8 @@
                     methods:{
                         fetch:function(){
                             var self = this;
-                            $.get('/api/products/', function(products){
+                            var post_ary = { _method:'post', _token: "{{ csrf_token() }}", search_string: this.search_string};
+                            $.post('/api/products/', post_ary, function(products){
                                 self.products = products;
                             });
                         },

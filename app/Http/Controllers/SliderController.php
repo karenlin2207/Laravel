@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -8,33 +7,30 @@ use Illuminate\Support\Facades\Input;
 
 class SliderController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json(Slider::all());
+        return response()->json(Slider::where('name', 'like', '%' . $request['search_string'] . '%')->get());
     }
 
     public function create()
     {
-    	return view('slider.create');
+        return view('slider.create');
     }
 
     public function store(Request $request)
     {
         $file = Input::file('user_icon_file');
-        $extension = $file->getClientOriginalExtension();
-        $file_name = strval(time()).str_random(5).'.'.$extension;
 
-        $destination_path = public_path().'/uploads/';
+        if ($file) {
+            $extension = $file->getClientOriginalExtension();
+            $file_name = strval(time()) . str_random(5) . '.' . $extension;
 
-        if (Input::hasFile('user_icon_file')) {
-            $upload_success = $file->move($destination_path, $file_name);
-        }
-        $request['img_uri'] = '/uploads/'. $file_name;
+            $destination_path = public_path() . '/uploads/';
 
-        if (isset($request['is_show'])) {
-            $request['is_show'] = true;
-        } else {
-            $request['is_show'] = false;
+            if (Input::hasFile('user_icon_file')) {
+                $upload_success = $file->move($destination_path, $file_name);
+            }
+            $request['img_uri'] = '/uploads/' . $file_name;
         }
 
         Slider::create($request->all());
@@ -44,33 +40,34 @@ class SliderController extends Controller
 
     public function edit(Slider $slider)
     {
-    	return view('slider.edit', compact('slider'));
+        return view('slider.edit', compact('slider'));
     }
 
     public function show()
     {
-    	return view('slider.show');
+        return view('slider.show');
     }
 
     public function update(Request $request, Slider $slider)
     {
         $request = $request->all();
         $file = Input::file('user_icon_file');
-        if ($file){
+        if ($file) {
             $extension = $file->getClientOriginalExtension();
-            $file_name = strval(time()).str_random(5).'.'.$extension;
-            $destination_path = public_path().'/uploads/';
+            $file_name = strval(time()) . str_random(5) . '.' . $extension;
+            $destination_path = public_path() . '/uploads/';
 
             if (Input::hasFile('user_icon_file')) {
                 $upload_success = $file->move($destination_path, $file_name);
             }
-            $request['img_uri'] = '/uploads/'. $file_name;
+            $request['img_uri'] = '/uploads/' . $file_name;
         }
         $request['short_describe'] = 'test';
 
         if (isset($request['is_show'])) {
             $request['is_show'] = true;
-        } else {
+        }
+        else {
             $request['is_show'] = false;
         }
 
@@ -86,7 +83,8 @@ class SliderController extends Controller
         return redirect('/admin/sliders');
     }
 
-    public function changeStatus(Request $request, Slider $slider){
+    public function changeStatus(Request $request, Slider $slider)
+    {
         $request = $request->all();
         $slider->update($request);
     }

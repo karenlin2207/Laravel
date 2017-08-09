@@ -21,9 +21,9 @@
                     <label>名稱 : </label>
                     <input type="text" class="form-control" name="name"/>
                     <label>市價 : </label>
-                    <input type="text" class="form-control" name="market_price"/>
+                    <input type="text" class="form-control" name="market_price" value="0"/>
                     <label>售價 : </label>
-                    <input type="text" class="form-control" name="sale_price"/>
+                    <input type="text" class="form-control" name="sale_price" value="0"/>
                     <label>商品tags : </label>
                     <input type="text" class="form-control" name="tags"/>
                     <label>商品圖片 :  </label>
@@ -41,7 +41,7 @@
                                 ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
                             });
                         </script>
-                    <label><input type="checkbox" name="is_show" value='1' checked>是否顯示</label>
+                    <label><input type="checkbox" name="is_show" value=1 checked>是否顯示</label>
                     <hr />
                     <button class="btn btn-success" type="submit">Submit</button>
                 </div>

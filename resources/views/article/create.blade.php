@@ -38,7 +38,7 @@
                                 ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
                             });
                         </script>
-                    <label><input type="checkbox" name="is_show" value='1' checked>是否顯示</label>
+                    <label><input type="checkbox" name="is_show" value=1 checked>是否顯示</label>
                     <hr />
                     <button class="btn btn-success" type="submit">Submit</button>
                 </div>
