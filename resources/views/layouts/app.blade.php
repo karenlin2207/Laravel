@@ -15,8 +15,8 @@
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-        ]); ?>
+                                'csrfToken' => csrf_token(),
+                            ]); ?>
     </script>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="/assets/css/bootstrap.css" rel="stylesheet" />
@@ -103,10 +103,14 @@ html, body {
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a href="ui.html" class="menu-top-active" >最新消息列表</a></li>
-                            <li><a href="table.html">商品列表</a></li>
-                            <li><a href="forms.html">口碑分享管理</a></li>
-                            <li><a href="login.html">首頁導覽圖管理</a></li>
+                            <li><a href="{{ route('articles.newIndex') }}" 
+                            @if(Route::current()->getName()==='articles.newIndex') class="menu-top-active" @endif>最新消息</a></li>
+                            <li><a href="{{ route('products.index') }}" 
+                            @if(Route::current()->getName()==='products.index') class="menu-top-active" @endif>所有車款</a></li>
+                            <li><a href="{{ route('articles.promotionIndex') }}" 
+                            @if(Route::current()->getName()==='articles.promotionIndex') class="menu-top-active" @endif>口碑分享管理</a></li>
+                            <li><a href="{{ route('sliders.index') }}" 
+                            @if(Route::current()->getName()==='sliders.index') class="menu-top-active" @endif>首頁導覽圖管理</a></li>
 
                         </ul>
                     </div>
